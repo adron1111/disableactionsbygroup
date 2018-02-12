@@ -4,4 +4,4 @@ email  none
 date   2016-09-17
 name   disable actions by group plugin
 desc   Prevent specific actions by user group
-url    http://
+url    https://www.dokuwiki.org/plugin:disableactionsbygroup
