@@ -17,7 +17,7 @@ require_once DOKU_PLUGIN.'action.php';
 
 class action_plugin_disableactionsbygroup extends DokuWiki_Action_Plugin {
 
-    public function register(Doku_Event_Handler &$controller) {
+    public function register(Doku_Event_Handler $controller) {
        $controller->register_hook('AUTH_LOGIN_CHECK', 'AFTER', $this, 'handle_post_login');
     }
 
@@ -26,10 +26,11 @@ class action_plugin_disableactionsbygroup extends DokuWiki_Action_Plugin {
         global $USERINFO;
 
         // If authentication failed
-        if(!$event->result)
+        if(!$event->result) {
             // Handle settings for ALL users (non logged in)
             $this->disablebygroupids(array('ALL'));
             return;
+        }
         // Handle settings for logged in users
         $this->disablebygroupids($USERINFO['grps']);
     }
